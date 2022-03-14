@@ -35,6 +35,14 @@
       <![endif]-->
 </head>
 <body>
+   <?php 
+   session_start(); 
+   if (!isset($_SESSION['a_email']) && !isset($_SESSION['a_password'])) 
+    {
+
+      header("location:login_admin.php");
+    }
+    ?>
  <nav id="sidebar">
                <div class="sidebar_blog_1">
                   <div class="sidebar-header">
@@ -128,7 +136,7 @@
                                        <a class="dropdown-item" href="profile.php">My Profile</a>
                                        
                                        
-                                       <a class="dropdown-item" href="logout.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                       <a class="dropdown-item" href="logouts.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                     </div>
                                  </li>
                               </ul>

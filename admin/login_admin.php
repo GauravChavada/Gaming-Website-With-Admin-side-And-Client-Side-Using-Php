@@ -54,11 +54,11 @@ if(isset($_SESSION['email']) && isset($_SESSION['password']))
                         <fieldset>
                            <div class="field">
                               <label class="label_field">Email Address</label>
-                              <input type="email" name="email" placeholder="E-mail" />
+                              <input type="email" name="emails" placeholder="E-mail" />
                            </div>
                            <div class="field">
                               <label class="label_field">Password</label>
-                              <input type="password" name="password" placeholder="Password" />
+                              <input type="password" name="passwords" placeholder="Password" />
                            </div>
                            
                            <div class="field margin_0">
@@ -93,23 +93,20 @@ if(isset($_SESSION['email']) && isset($_SESSION['password']))
    </body>
 </html>
 <?php
-
+   session_start();
       include("connect.php");
-      $em=$_POST['email'];
-      $pw=$_POST['password'];
-      $query=mysqli_query($a,"SELECT * FROM admin WHERE a_email='$em' AND a_password='$pw'");
+      $em=$_POST['emails'];
+      $pw=$_POST['passwords'];
+      $query=mysqli_query($a,"SELECT * FROM admin WHERE a_email='$em' AND 
+         a_password='$pw'");
       $login=mysqli_fetch_array($query);
-      print $login;
+
       if (isset($_POST['login'])) 
       {
-         if ($login['a_email']==$_POST['email'] && $login['a_password']==$_POST['password'])
+         if ($login['a_email']==$_POST['emails'] && $login['a_password']==$_POST['passwords'])
          {
-              
-               //session_start();
-               $_SESSION['email']=$login['a_email'];
-               $_SESSION['password']=$login['a_password'];
-               echo $_SESSION['email'];
-               echo $_SESSIPN['password'];
+               $_SESSION['a_email']=$login['a_email'];
+               $_SESSION['a_password']=$login['a_password'];
                header("location:index.php");
 
 

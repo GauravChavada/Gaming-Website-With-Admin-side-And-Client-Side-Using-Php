@@ -39,7 +39,7 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Login</h3>
-                        <form action="Database/login_database.php" method="POST">
+                        <form method="POST">
                             <div class="input__item">
                                 <input type="text" name="email" placeholder="Email address">
                                 <span class="icon_mail"></span>
@@ -49,6 +49,7 @@
                                 <span class="icon_lock"></span>
                             </div>
                             <input type="submit" class="site-btn" value="Login" name="ok">
+
                         </form>
                         <a href="#" class="forget_pass">Forgot Your Password?</a>
                     </div>
@@ -95,6 +96,27 @@
             </form>
         </div>
     </div>
+   <?php
+$a=mysqli_connect("localhost","root","","project");
+if(isset($_POST['ok']))
+{
+  $name=$_POST['email'];
+  $pass=$_POST['password'];
+  $temp=mysqli_query($a,"SELECT * FROM users WHERE fname='$name' AND password='$pass'");
+  $data=mysqli_fetch_array($temp);
+  if($data['fname']==$_POST['email'] && $data['password']==$_POST['password'])
+    {
+      session_start();
+      $_SESSION['name']=$data['fname'];
+      $_SESSION['pass']=$data['password'];
+      echo "<script>window.location.href='index.php'</script>";
+    }
+    else
+    {
+      echo "<script>alert('Invalid Credentials........')</script>";
+    }
+}
+?>
     <!-- Search model end -->
 
     <!-- Js Plugins -->

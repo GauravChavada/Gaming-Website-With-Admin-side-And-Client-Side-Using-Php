@@ -1,11 +1,9 @@
-     <!DOCTYPE html>
+    <!DOCTYPE html>
     <html lang="zxx">
 
     <head>
         <title>X Core Gaming Store</title>
     </head>
-    
-
     <body>
           <!-- Page Preloder -->
         <div id="preloder">
@@ -74,38 +72,24 @@
       {
        ?>
        <a href="product_details.php?uid=<?php echo $data['p_name'];?>"> 
-       <div  class="col-lg-2 col-md-5 col-sm-5"> 
+       <div  class="col-lg-2 col-md-5 col-sm-5">
     <div class="product__item__pic set-bg" 
-    data-setbg="../admin/<?php echo $data['p_image']?>"></div>
-
-                                         
+    data-setbg="../admin/<?php echo $data['p_image']?>"></div>                                     
     <div class="product__item__text">
     <ul>                                             
-        <li><?php echo $data['p_category']?></li>
-                                           
-     </ul>
-     
+        <li><?php echo $data['p_category']?></li>                                        
+     </ul>    
     <h5 style="color: white;">
         <?php echo $data['p_name']?>
     </h5>
     <h5 style="color: red;"><?php echo $data['p_price']?></h5></div>
-    
     </a>
+    </div>  
 
-       <hr>  
-       <hr> 
-
-    </div>
-
-
-
-                                 
      <?php
       }
-      ?>
-    
-    </div>    
-    
+      ?>  
+    </div>       
      </section>
 
       <?php

@@ -2,12 +2,13 @@
 session_start();
 if(isset($_SESSION['name']) && isset($_SESSION['pass']))
 {	$username=$_SESSION['name'];
-	$id=$_GET['uid'];
+	$price=$_GET['price'];
+	$name=$_GET['pname'];
 	include("connect.php");
-	if(mysqli_query($a,"INSERT INTO Wishlist (w_u_name,w_productlist) VALUES 
-		('$username','$id')"))
+	if(mysqli_query($a,"INSERT INTO cart (cart_name,cart_list,cart_total) VALUES 
+		('$username','$name','$price')"))
 	{
-			header("location:product_details.php?uid=$id");
+			header("location:product_details.php?uid=$name");
 	}
 	else 
 	{
@@ -26,9 +27,8 @@ else
 		} 		
 		else 
 		{	
-			
-  			window.history.back(); 			
-		}	
+			window.history.back( );		
+  		}	
 	</script>
 	<?php 
 	

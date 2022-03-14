@@ -110,12 +110,17 @@
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
                         <?php 
+
                         
-                        if (isset($_SESSION['email']) && isset($_SESSION['password']))
+                        if (isset($_SESSION['name']) && isset($_SESSION['pass']))
                         {
                             ?>
-                            <a href="/website/Database/logout.php" class=' fa fa-sign-out' style="font-size:25px;">
-                                
+                            <a href="./logout_client.php" class=' fa fa-sign-out' style="font-size:22px;">
+
+                            <a href="/website/wishlist.php" class=' fa fa-heart' style="font-size:22px;">
+
+                            <a href="/website/cart.php"  class="fa fa-shopping-cart"
+                            style="font-size:22px;"></a>  
                             </a>
 
                         <?php
@@ -127,7 +132,7 @@
                                 
                                 ?>
 
-                                <a class="hover" href='./login.php'><span 
+                                <a class="hover" href='./login_client.php'><span 
                                 class="icon_profile "></span></a>
                             <?php
                         }

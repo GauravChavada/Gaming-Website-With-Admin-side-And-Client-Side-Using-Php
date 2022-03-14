@@ -1,7 +1,7 @@
 <?php 
 $id=$_GET['remove'];
 session_start();
-$username=$_SESSION['email'];
+$username=$_SESSION['name'];
 include("connect.php");
 if(mysqli_query($a,"DELETE FROM wishlist WHERE w_u_name='$username' and w_productlist='$id'")) 
 {

@@ -63,9 +63,9 @@
                             <div class="anime__details__btn">
                                 <?php
                                 $productlist=$data['p_name'];
-                                if(isset($_SESSION['email']) && isset($_SESSION['password']))
+                                if(isset($_SESSION['name']) && isset($_SESSION['pass']))
                                 { 
-                                  $username=$_SESSION['email'];
+                                  $username=$_SESSION['name'];
                                 }
                                 else 
                                 {
@@ -88,9 +88,26 @@
                                
                                 ?> 
                             
+                                <a href="./download_products.php?file=<?php echo $data['p_image'];?>" class="follow-btn"><span>Buy Now</span></a>
+
+
+                                     <?php
+                            $a=mysqli_connect("localhost","root","","project");
+                            $q=mysqli_query($a,"SELECT * FROM cart WHERE cart_list='$productlist' and cart_name='$username'");
                                 
-                                <a href="#" class="watch-btn"><span>Buy Now</span> <i
-                                    class="fa fa-angle-right"></i></a>
+                                if ($number=mysqli_num_rows($q)==0) 
+                                    { ?>
+                                        <a href="./cart_insert.php?pname=<?php echo $data['p_name'];?>&amp;price=<?php echo $data['p_price'];?>" class="watch-btn"><span>Add to cart</span></a>
+
+                              <?php  }
+                              else
+                            { 
+                                ?>
+                              <a href="./delete_cart.php?delete_cart=<?php echo $data['p_name'];?>" class="watch-btn"><span>Remove from cart</span></a>
+                            <?php
+                            }
+                                ?>
+
                                 </div>
                             </div>
 

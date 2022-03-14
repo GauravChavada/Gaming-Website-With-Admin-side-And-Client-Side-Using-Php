@@ -54,7 +54,7 @@ $cat=$_GET['uid'];
 
                             while 
                                 ($data=mysqli_fetch_array($q,MYSQLI_ASSOC)) 
-                            { ?><a href="product_details.php?uid=<?php echo $data['p_id'];?>">
+                            { ?><a href="product_details.php?uid=<?php echo $data['p_name'];?>">
                                 <div class="col-lg-3 col-md-5 col-sm-5">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="../admin/<?php echo $data['p_image']?>">
