@@ -5,7 +5,6 @@
         <title>X Core Gaming Store</title>
     </head>
     <body>
-          <!-- Page Preloder -->
         <div id="preloder">
             <div class="loader"></div>
         </div>
@@ -14,46 +13,34 @@
         ?>   
         <section class="hero">
             <div class="container">
+                <?php 
+                $ab=mysqli_connect("localhost","root","","project");
+                $q=mysqli_query($ab,"SELECT * FROM product WHERE sidebar_status='1'");
+                    while ($d=mysqli_fetch_array($q)) 
+      {
+       ?>
+                 
                 <div class="hero__slider owl-carousel">
-                    <div class="hero__items set-bg" data-setbg="img/hero/BG-2.jpg">
+                    <div class="hero__items set-bg" data-setbg="../admin/<?php echo $d['p_image']?>">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="hero__text">
-                                    <div class="label">Adventure</div>
-                                    <h2>Assassin's Creed</h2>
-                                    <p>Play your way through history in the award-winning video game series. </p>
-                                    <p> starting at ₹1,500.0</p>
-                                    <a href="#"><span>Buy Now</span> <i class="fa fa-angle-right"></i></a>
+                                    <div class="label"><?php echo $d['p_category']?></div>
+                                    <h2 ><?php echo $d['p_name']?></h2>
+                                    <p><?php echo $d['p_dis']?></p>
+                                    <h2 style="color: red;"><?php echo "₹ ".$d['p_price']?></h2> 
+                                    <br>
+                                    <br>
+
+                                    <a href="./product_details.php?uid=<?php echo $d['p_name'];?>" class="follow-btn "><span>View More</span></a>
+                                    <!-- <a href="#"><span>Download Now</span> <i class="fa fa-angle-right"></i></a> -->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="hero__items set-bg" data-setbg="img/hero/BG-1.jpg">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="hero__text">
-                                    <div class="label">Action</div>
-                                    <h2>Call Of Duty: Online</h2>
-                                    <p>The free-to-play game features some of the same multiplayer.</p>
-                                    <p> starting at ₹1,999.0</p>
-                                    <a href="#"><span>Buy Now </span> <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero__items set-bg" data-setbg="img/hero/BG-3.jpg">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="hero__text">
-                                    <div class="label">Battle Royal</div>
-                                    <h2>PUBG</h2>
-                                    <p>PUBG: Battlegrounds is an online multiplayer battle royale game. </p>
-                                    <p> Free Now</p>
-                                    <a href="#"><span>Play Now</span> <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
+                    
+                    
                 </div>
             </div>
         </section>
@@ -82,10 +69,12 @@
     <h5 style="color: white;">
         <?php echo $data['p_name']?>
     </h5>
-    <h5 style="color: red;"><?php echo $data['p_price']?></h5></div>
-    </a>
-    </div>  
+    <h5 style="color: red;"><?php echo "₹ ".$data['p_price']?></h5></div>
 
+    </a>
+    <br>
+    
+    </div>  
      <?php
       }
       ?>  
@@ -95,8 +84,6 @@
       <?php
         include("footer.php");
         ?>
-    <!-- Search model end -->
-
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -106,8 +93,5 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-
-
     </body>
-
     </html>

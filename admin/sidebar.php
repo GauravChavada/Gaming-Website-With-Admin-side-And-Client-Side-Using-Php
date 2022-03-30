@@ -55,7 +55,7 @@
                      <div class="user_profle_side">
                         <div class="user_img"><img class="img-responsive" src="images/layout_img/user_img.jpg" alt="#" /></div>
                         <div class="user_info">
-                           <h6>Daddy</h6>
+                           <h6>Admin</h6>
                            <p><span class="online_animation"></span> Online</p>
                         </div>
                      </div>
@@ -103,6 +103,13 @@
                            </li> -->
                         </ul>
                      </li>
+                     <li class="active">
+                        <a href="#orders" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-clone yellow_color"></i> <span>Orders</span></a>
+                        <ul class="collapse list-unstyled" id="orders">
+                           <li>
+                              <a href="show_orders.php">> <span>Show Orders</span></a>
+                           </li>
+                        </ul>
 
                      <li class="active">
                         <a href="#Feedback" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-clone yellow_color"></i> <span>Feedback</span></a>

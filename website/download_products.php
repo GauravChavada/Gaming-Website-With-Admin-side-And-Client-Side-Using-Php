@@ -1,38 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Download</title>
-</head>
-<body>
-</body>
-</html>
-
-<?php
-
+<?php 
+session_start();
+$username=$_SESSION['name'];
+  
+$game_name=$_GET['name'];
+include("connect.php");
+if (mysqli_query($a,"INSERT INTO libarary (user_name,game_name) VALUES ('$username','$game_name')")) 
+{	
+	header("location:library.php");
+	// $file_url =$_GET['file'];
+	// header('Content-Type: application/octet-stream');  
+	// header("Content-Transfer-Encoding: Binary");   
+	// header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
+	// readfile($file_url);
+}
+else 
+{
+	echo "<script>alert('error')</script>";
+}
  
-$file_url =$_GET['file'];  
-header('Content-Type: application/octet-stream');  
-header("Content-Transfer-Encoding: Binary");   
-header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");   
-readfile($file_url);  
- 
-	// $file=$_GET['file'];
-	// $filename = basename($file);
-	// //$filepath = $filename;
-	// if (file_exists($filename)) 
-	// {
-	// 	header("Cache-Control:public");
-	// 	header("Content-Description: File Trasnfer");
-	// 	header("Content-Disposition: attchment; filename=$filename");
-	// 	header("Content-Type : application/zip ");
-	// 	header("Content-Tranfer-Encoding: binary ");
-	// 	readfile($filepath);
-	// 	exit;
-	// }
-	// else
-	// {
-	// 	echo "This file is not exist on the server.";
-	// }
 ?>

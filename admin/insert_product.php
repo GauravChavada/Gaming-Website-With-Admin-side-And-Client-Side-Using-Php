@@ -5,6 +5,7 @@ if (isset($_POST['insert']))
 	$category=$_POST['pcategory'];
 	$dis=$_POST['pdis'];	
 	$price=$_POST['pprice'];
+	$status=$_POST['sidebar_status'];
 
 		$filename=$_FILES["img"]["name"];
 		$tempname=$_FILES["img"]["tmp_name"];
@@ -14,7 +15,7 @@ if (isset($_POST['insert']))
 		
 		include("connect.php");
 
-		if(mysqli_query($a,"INSERT INTO product(p_category,p_name,p_image,p_dis,p_price) VALUES('$category','$name','$path','$dis','$price')"))
+		if(mysqli_query($a,"INSERT INTO product(p_category,p_name,p_image,p_dis,p_price,sidebar_status) VALUES('$category','$name','$path','$dis','$price','$status')"))
 		{
 			 header("location:insert_product.php");
 		}
@@ -87,6 +88,12 @@ if (isset($_POST['select']))
 					       	<tr>
 					       		<td>Product Image</td>
 					       		<td><input type="file" name="img"></td>
+					       	</tr>
+					       	<tr class="fs-4">
+					       		<td >Sidebar Status</td>
+					       		<td><input type="radio" name="sidebar_status" value="1"> Active
+					       		<input type="radio" name="sidebar_status" value="0">   Inactive</td>
+					       		<td></td>
 					       	</tr>
 					       	<tr>
         						<td colspan="2" align="center">

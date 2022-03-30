@@ -34,7 +34,7 @@ $cat=$_GET['uid'];
                     while ($d=mysqli_fetch_array($query)) 
                 {
                 ?>
-                     <h4><?php echo $d['c_name'];?></h4>
+                     <h4 style="color: red;"><?php echo $d['c_name'];?></h4>
 
                 <?php } ?>
 
@@ -66,7 +66,7 @@ $cat=$_GET['uid'];
                                             
                                         </ul>
                                         <h5><a href="#"><?php echo $data['p_name']; ?></a></h5>
-                                        <h5><a href="#"><?php echo $data['p_price']?></a></h5>
+                                        <h5 style="color: red;"><?php echo "₹ ".$data['p_price']?></h5>
                                     </div>
                                 </div>
                             </div>

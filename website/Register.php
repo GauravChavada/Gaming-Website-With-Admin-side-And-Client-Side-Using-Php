@@ -2,44 +2,23 @@
 <html lang="zxx">
 
 <head>
-    
+    <title>Register</title>
 </head>
 
 <body>
-    <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
-    <!-- Header Section Begin -->
      <?php
     include("header.php");
     ?>
-    <!-- Header End -->
-
-    <!-- Normal Breadcrumb Begin -->
-    <!-- <section class="normal-breadcrumb set-bg" data-setbg="img/bag.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="normal__breadcrumb__text">
-                        <h2>Login</h2>
-                        <p>Welcome to the official Game Store.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Normal Breadcrumb End -->
-
-    <!-- Login Section Begin -->
     <section class="login spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Register</h3>
-                        <form action="Database/register_database.php" method="POST">
+                        <form method="POST">
                             <div class="input__item">
                                 <input type="text" name="fname" placeholder="First Name">
                                 <span class="icon_profile"></span>
@@ -60,14 +39,14 @@
                                 <input type="text" name="password" placeholder="Password">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Register Now</button>
+                            <button type="submit" name="register" class="site-btn">Register Now</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>Already Have An Account?</h3>
-                        <a href="login.php" class="primary-btn">Login Now</a>
+                        <a href="login_client.php" class="primary-btn">Login Now</a>
                     </div>
                 </div>
             </div>
@@ -118,7 +97,24 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
-
+    <?php
+    if (isset($_POST['register'])) 
+    {
+        $connect = mysqli_connect("localhost","root","","project");
+        $fname=$_POST['fname'];
+        $lname=$_POST['lname'];
+        $email=$_POST['email'];
+        $dname=$_POST['dname'];
+        $password=$_POST['password'];
+        if(mysqli_query($connect,"INSERT INTO users(fname,lname,dname,email,password) VALUES ('$fname','$lname','$dname','$email','$password')"))
+        {
+        header("location:login_client.php");
+        }
+        else 
+        {
+        echo "<script>alert('Error Registering in databse')</script>";
+        }
+    }
+     ?>
 </body>
-
 </html>

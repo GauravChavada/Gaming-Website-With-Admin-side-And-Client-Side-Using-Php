@@ -9,6 +9,6 @@ if(mysqli_query($a,"DELETE FROM cart WHERE cart_name='$username' and cart_list='
 }
 else
 {
-	echo "<script>alert('Cannot Remove From Cartt')</script>";
+	echo "<script>alert('Cannot Remove From Cart')</script>";
 }
- ?>
+?>

@@ -8,6 +8,7 @@ if (isset($_POST['update']))
 	$pcat=$_POST['pcategory'];
 	$pprice=$_POST['pprice'];
 	$pdis=$_POST['pdis'];
+	$status=$_POST['sidebar_status'];
 	
 	$filename=$_FILES["img"]["name"];
 	$tempname=$FILES["img"]["tmp_name"];
@@ -15,7 +16,10 @@ if (isset($_POST['update']))
 
 	move_uploaded_file($tempname, $path);
 
-	if (mysqli_query($a,"UPDATE `product` SET `p_category`='$pcat',`p_name`='$pnm',`p_image`='$path',`p_dis`='$pdis',`p_price`='$pprice' WHERE p_id='$id'")) 
+	// if (mysqli_query($a,"UPDATE `product` SET `p_category`='$pcat',`p_name`='$pnm',`p_image`='$path',`p_dis`='$pdis',`p_price`='$pprice' WHERE p_id='$id'")) 
+	if (mysqli_query($a,"UPDATE `product` SET `p_category`='$pcat',`p_name`='$pnm',`p_image`='$path',`p_dis`='$pdis',`p_price`='$pprice',`sidebar_status`='$status' WHERE p_id='$id'"))
+		
+	
 	{
 		header("location:show_product.php");
 	}
@@ -84,11 +88,19 @@ $data=mysqli_fetch_array($query);
 					       	<tr>
 					       		<td>Product Image</td>
 					       		<td><input type="file" name="img" value="<?php echo $data['p_image'];?>"></td>
+					       		<tr>
+					       		<td>Sidebar Status</td>
+					       		<td><input type="radio" name="sidebar_status" value="1"> Active
+					       		<input type="radio" name="sidebar_status" value="0">   Inactive</td>
+
+					       	</tr>
+
 					       	</tr>
 					       	<tr>
         						<td colspan="2" align="center">
        							<input type="submit" value="Update" name="update" class="btn btn-primary"></td>
         					</tr>
+        					
 					       </table>
 					   </form>
 </body>

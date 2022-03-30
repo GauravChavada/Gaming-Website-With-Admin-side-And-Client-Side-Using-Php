@@ -21,7 +21,7 @@
 		 	
       $a=mysqli_connect("localhost","root","","project");
       $query=mysqli_query($a,"SELECT * FROM wishlist WHERE w_u_name='$username'");
-      while ($data=mysqli_fetch_array($query)) 
+      while ($data=mysqli_fetch_array($query))
       { 
       	$productlist=$data['w_productlist'];
       	$a=mysqli_connect("localhost","root","","project");
@@ -44,7 +44,7 @@
     	<h5 style="color: white;">
         	<?php echo $d['p_name']?>
     	</h5>
-    	<h5 style="color: red;"><?php echo $d['p_price']?></h5></div>
+    	<h5 style="color: red;"><?php echo "₹ ".$d['p_price']?></h5></div>
     
     	</a>
 

@@ -16,6 +16,7 @@
 		<th>Price</th>
 		<th>Description</th>
 		<th>Image</th>
+		<th>Sidebar Status</th>
 		<th colspan="2">Action</th>
 	</tr>
 	<?php 
@@ -31,6 +32,7 @@
 		<td><?php echo $data['p_price']; ?></td>
 		<td><?php echo $data['p_dis']; ?></td>
 		<td><img height=150px width=160px src="<?php echo $data['p_image']; ?>"></td>
+		<td><?php echo $data['sidebar_status']?></td>
 		<td><a href="delete_product.php?userid=<?php echo $data['p_id']; ?>" 
 			class="text-primary">Delete</a>
 		<span>|</span>	
